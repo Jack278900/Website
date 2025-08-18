@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin — A Cowboy’s Frontier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .admin-wrap{max-width:820px;margin:40px auto;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
+    .lock{display:flex;gap:10px;align-items:center;margin-bottom:12px;color:var(--muted)}
+    .row{display:grid;gap:10px;margin:10px 0}
+    input[type="password"], input[type="text"], textarea{width:100%;background:#0e1013;color:#e9ecf2;border:1px solid var(--line);border-radius:10px;padding:10px}
+    .muted{color:var(--muted);font-size:.95rem}
+    .ok{color:#9ef59e}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="admin-wrap" id="gate">
+      <div class="lock">🔒 <strong>Admin Login</strong></div>
+      <p class="muted">This passphrase is checked in your browser only (no server). For real security, use an auth provider.</p>
+      <div class="row">
+        <input id="pass" type="password" placeholder="Enter passphrase…" aria-label="Passphrase">
+        <button class="btn" id="login">Unlock</button>
+      </div>
+      <p class="muted">Set your passphrase inside <code>admin.html</code> → <code>PASS_HASH</code> (SHA-256).</p>
+    </div>
+
+    <div class="admin-wrap" id="panel" hidden>
+      <h2>Admin Panel</h2>
+      <p class="muted">Add quick News posts (stored in your browser’s localStorage and rendered on the homepage).</p>
+
+      <div class="row">
+        <input id="title" type="text" placeholder="Post title">
+        <textarea id="body" rows="5" placeholder="Post body…"></textarea>
+        <button class="btn" id="add">Add Post</button>
+        <span id="status" class="muted"></span>
+      </div>
+
+      <h3>Existing Posts</h3>
+      <div id="posts" class="stack"></div>
+    </div>
+  </main>
+
+  <script>
+    // ======= CONFIG: set your passphrase hash (SHA-256 hex) =======
+    // Default hash = sha256('change-me'); CHANGE THIS.
+    const PASS_HASH = '7b19d2fbbd5a6cbd2c1c8b7a9f3d680a0b1f3e2c2b86d7b8f4a0f7b2d3a9c1ef';
+    // =============================================================
+
+    async function sha256Hex(str){
+      const enc = new TextEncoder().encode(str);
+      const buf = await crypto.subtle.digest('SHA-256', enc);
+      const arr = Array.from(new Uint8Array(buf));
+      return arr.map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    const gate = document.getElementById('gate');
+    const panel = document.getElementById('panel');
+    const passInput = document.getElementById('pass');
+    const loginBtn = document.getElementById('login');
+
+    loginBtn.addEventListener('click', async () => {
+      const hash = await sha256Hex(passInput.value || '');
+      if (hash === PASS_HASH) {
+        gate.hidden = true;
+        panel.hidden = false;
+      } else {
+        alert('Wrong passphrase.');
+      }
+    });
+
+    // News post management (localStorage)
+    const titleEl = document.getElementById('title');
+    const bodyEl = document.getElementById('body');
+    const addBtn = document.getElementById('add');
+    const postsEl = document.getElementById('posts');
+    const statusEl = document.getElementById('status');
+
+    function readPosts(){
+      try { return JSON.parse(localStorage.getItem('acf_news') || '[]'); }
+      catch(_){ return []; }
+    }
+    function writePosts(list){
+      localStorage.setItem('acf_news', JSON.stringify(list));
+    }
+    function render(){
+      const list = readPosts();
+      postsEl.innerHTML = list.length ? list.map((p,i)=>`
+        <article class="news">
+          <time datetime="${p.date}">${new Date(p.date).toLocaleString()}</time>
+          <h3>${p.title}</h3>
+          <p>${p.body}</p>
+          <button data-i="${i}" class="btn btn-small" style="margin-top:8px">Delete</button>
+        </article>
+      `).join('') : '<p class="muted">No posts yet.</p>';
+      postsEl.querySelectorAll('button[data-i]').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          const list = readPosts();
+          list.splice(Number(b.dataset.i),1);
+          writePosts(list); render();
+        });
+      });
+    }
+    render();
+
+    addBtn.addEventListener('click', ()=>{
+      const t = titleEl.value.trim(), b = bodyEl.value.trim();
+      if(!t || !b) return alert('Please fill title and body.');
+      const list = readPosts();
+      list.unshift({ title:t, body:b, date:new Date().toISOString().slice(0,19) });
+      writePosts(list); render();
+      titleEl.value=''; bodyEl.value='';
+      statusEl.textContent = 'Saved locally. Refresh the homepage to see it.';
+      statusEl.classList.add('ok');
+      setTimeout(()=>statusEl.textContent='', 3000);
+    });
+  </script>
+</body>
+</html>
