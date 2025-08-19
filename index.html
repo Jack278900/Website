@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>A Cowboy’s Frontier — Xbox RP</title>
+  <title>A Cowboy’s Frontier — The Most Realistic Xbox RDR Roleplay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Red Dead Redemption’s most realistic Xbox RP experience. Apply, explore events, and meet the community." />
+  <meta name="theme-color" content="#7c3f18" />
+  <meta name="description" content="A Cowboy’s Frontier — Red Dead Redemption's most realistic Xbox RP experience. Managed by JR Company Registered." />
+
+  <!-- Western & elegant fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <!-- 'Rye' = western display, 'Cinzel' = cinematic headings, 'Outfit' = crisp body -->
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Cinzel:wght@600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <link rel="icon" href="assets/logo.jpg">
-  <meta property="og:title" content="A Cowboy’s Frontier — Xbox RP" />
-  <meta property="og:description" content="Red Dead Redemption’s most realistic Xbox RP experience." />
-  <meta property="og:image" content="assets/hero.jpg" />
-  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta property="og:title" content="A Cowboy’s Frontier — Xbox RP">
+  <meta property="og:description" content="Red Dead Redemption’s most realistic Xbox RP experience. Join the server.">
+  <meta property="og:image" content="assets/hero.jpg">
+  <meta property="og:type" content="website">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/">
-        <img class="brand-logo" src="assets/logo.jpg.PNG" alt="A Cowboy’s Frontier logo" />
+        <img src="assets/logo.jpg" alt="A Cowboy’s Frontier logo" class="brand-logo">
         <div class="brand-text">
-          <span class="brand-title">A Cowboy’s Frontier</span>
-          <span class="brand-tag">Xbox Roleplay</span>
+          <span class="title-west">A Cowboy’s Frontier</span>
+          <span class="tag-small">Red Dead Xbox Roleplay</span>
         </div>
       </a>
 
@@ -32,10 +38,10 @@
 
       <nav id="siteNav" class="site-nav" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#slider">Gallery</a>
+        <a href="#gallery">Gallery</a>
         <a href="#bot">Jack Bot</a>
         <a href="#join" class="btn btn-small">Join</a>
-        <a href="admin.html" class="admin-link" aria-label="Admin login">Admin</a>
+        <a href="admin.html" class="admin-link">Admin</a>
       </nav>
     </div>
   </header>
@@ -43,64 +49,65 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero" style="--hero:url('assets/hero.jpg')">
+      <div class="hero-overlay"></div>
       <div class="container hero-inner">
-        <div class="hero-copy">
-          <h1><span class="sub">Welcome to</span> The Frontier</h1>
-          <p class="tagline">Red Dead Redemption’s <strong>most realistic Xbox RP</strong> experience.</p>
-          <ul class="hero-points">
-            <li>Serious roleplay • authentic rules • living economy</li>
-            <li>Active staff & events • immersive comms • fair enforcement</li>
-            <li>Managed by <strong>JR Company R</strong></li>
-          </ul>
-
-          <div class="hero-actions" id="join">
-            <a class="btn btn-large" href="https://discord.gg/Jtt4JxpNcs" target="_blank" rel="noopener">Join the Server</a>
-            <a class="btn btn-ghost" href="#about">Learn More</a>
-          </div>
+        <h1 class="hero-title">
+          <span class="over">Welcome to</span>
+          <span class="rdr">THE FRONTIER</span>
+        </h1>
+        <p class="hero-sub">Red Dead Redemption’s <strong>most realistic Xbox RP</strong> experience.</p>
+        <ul class="hero-bullets">
+          <li>Story-first roleplay • living economy • authentic law & order</li>
+          <li>Events & seasons • fair enforcement • immersive comms</li>
+          <li>Managed by <strong>JR Company Registered</strong></li>
+        </ul>
+        <div class="hero-cta" id="join">
+          <a class="btn btn-badge" href="https://discord.gg/Jtt4JxpNcs" target="_blank" rel="noopener">Join the Server</a>
+          <a class="btn btn-ghost" href="#about">Learn More</a>
         </div>
       </div>
-      <div class="hero-gradient"></div>
+      <div class="hero-smoke"></div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section">
+    <section id="about" class="section paper">
       <div class="container">
         <header class="section-header">
-          <h2>What makes us different</h2>
-          <p>Grounded rules, thoughtful administration, and story-first play. We balance fairness with freedom.</p>
+          <h2 class="section-title"><span>Why We’re Different</span></h2>
+          <p class="muted">No fluff — just grounded, cinematic Red Dead roleplay done right.</p>
         </header>
 
-        <div class="grid-3">
+        <div class="grid-3 cards-pop">
           <article class="card">
-            <h3>Realism First</h3>
-            <p>From weapons and horses to law and logistics, we model the frontier with respect for detail.</p>
+            <h3 class="card-title">Realism, Not Grind</h3>
+            <p>We model the frontier like it felt: scarcity, risk, and triumph. Your choices matter. Your legend is earned.</p>
           </article>
           <article class="card">
-            <h3>Events & Seasons</h3>
-            <p>Structured arcs and dynamic events keep storylines fresh and communities connected.</p>
+            <h3 class="card-title">Events & Seasons</h3>
+            <p>Marshal raids, outlaw heists, rancher feuds, and traveling shows — structured arcs keep every week fresh.</p>
           </article>
           <article class="card">
-            <h3>Pro Staff</h3>
-            <p>Experienced admins and marshals keep play smooth, fun, and fair — no nonsense.</p>
+            <h3 class="card-title">Steady Hands</h3>
+            <p>Experienced staff & marshals keep the peace. We favor story & fairness — not drama.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SLIDER / GALLERY -->
-    <section id="slider" class="section section-alt">
+    <!-- GALLERY / SLIDER -->
+    <section id="gallery" class="section dusk">
       <div class="container">
         <header class="section-header">
-          <h2>Scenes from the Trail</h2>
-          <p>Add your screenshots in <code>/assets/slide-*.jpg</code>. Swipe on mobile.</p>
+          <h2 class="section-title"><span>Scenes from the Trail</span></h2>
+          <p class="muted">Swipe on mobile • arrows & dots on desktop. Replace images in <code>/assets/slide-*.jpg</code>.</p>
         </header>
 
-        <div class="slider" data-autoplay="6000">
+        <div class="slider" data-autoplay="5500">
           <button class="nav prev" aria-label="Previous slide">‹</button>
           <div class="track">
-            <div class="slide"><img src="assets/slide-1.jpg" alt="Frontier camp at dusk"></div>
+            <div class="slide"><img src="assets/slide-1.jpg" alt="Camp at dusk"></div>
             <div class="slide"><img src="assets/slide-2.jpg" alt="Riders crossing the plains"></div>
-            <div class="slide"><img src="assets/slide-3.jpg" alt="Town at sunrise"></div>
+            <div class="slide"><img src="assets/slide-3.jpg" alt="Town in morning light"></div>
           </div>
           <button class="nav next" aria-label="Next slide">›</button>
           <div class="dots" aria-label="Slider indicators"></div>
@@ -109,53 +116,53 @@
     </section>
 
     <!-- JACK BOT SHOWCASE -->
-    <section id="bot" class="section">
+    <section id="bot" class="section paper">
       <div class="container">
         <header class="section-header">
-          <h2>Meet <span class="accent">Jack Bot</span></h2>
-          <p>Your tireless deputy: apps, logs, economy, games, and more — built for RDR RP.</p>
+          <h2 class="section-title"><span>Meet Jack Bot</span></h2>
+          <p class="muted">Your tireless deputy — paperwork, economy, logs, and games handled clean and fast.</p>
         </header>
 
         <div class="bot-grid">
-          <img class="bot-visual" src="assets/jackbot.jpg" alt="Jack Bot showcase">
-          <ul class="bot-list">
-            <li><strong>Applications & Modals</strong> — Pilot/Infantry/Switch flows, DM notices, auto role on accept.</li>
-            <li><strong>Telegram System</strong> — Private channels, 4-digit numbers, auto cleanup, live embed update.</li>
-            <li><strong>Economy & Shop</strong> — Balances, items, dynamic shop, inventory, boosters-only perks.</li>
-            <li><strong>Games</strong> — Poker & Blackjack with chips, fair payouts, buy-ins.</li>
-            <li><strong>Zone Access & Clearance</strong> — Level-gated areas, logging, management tools.</li>
-            <li><strong>Logging & Manifests</strong> — Armory/supply logs, JSON storage, admin views.</li>
-          </ul>
-        </div>
-
-        <div class="cta-center">
-          <a class="btn" href="https://discord.gg/Jtt4JxpNcs" target="_blank" rel="noopener">Invite & Try Jack Bot</a>
+          <div class="bot-left">
+            <img class="bot-img" src="assets/jackbot.jpg" alt="Jack Bot showcase">
+          </div>
+          <div class="bot-right">
+            <ul class="bot-list">
+              <li><strong>Applications</strong> — Pilot/Infantry/Switch flows, DM accept/deny, role on approval.</li>
+              <li><strong>Telegram System</strong> — Private channels, 4-digit numbers, auto cleanup, live embed.</li>
+              <li><strong>Economy & Shop</strong> — Balances, items, inventory, booster perks, admin money tools.</li>
+              <li><strong>Games</strong> — Poker & Blackjack, buy-ins & payouts with persistent chips.</li>
+              <li><strong>Zone Access</strong> — Level-gated areas, logs, and management controls.</li>
+              <li><strong>Supply & Armory Logs</strong> — JSON storage, manifests, MP-only visibility.</li>
+            </ul>
+            <div class="cta-inline">
+              <a class="btn" href="https://discord.gg/Jtt4JxpNcs" target="_blank" rel="noopener">Try Jack Bot</a>
+              <span class="badge">Managed by JR Company Registered</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- NEWS (editable via admin page: stored in localStorage) -->
-    <section id="news" class="section section-alt">
-      <div class="container narrow">
-        <header class="section-header">
-          <h2>News & Updates</h2>
-          <p>These posts can be added from the Admin page (browser-local). For site-wide changes, edit the repo.</p>
-        </header>
-        <div id="newsList" class="stack"></div>
+    <!-- CTA -->
+    <section class="section dusk cta-center">
+      <div class="container">
+        <h3 class="cta-title">Ready to write your legend?</h3>
+        <a class="btn btn-badge" href="https://discord.gg/Jtt4JxpNcs" target="_blank" rel="noopener">Join the Server</a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer class="site-footer wood">
     <div class="container footer-inner">
       <div class="footer-left">
-        <span class="managed">Managed by <strong>JR Company R</strong></span>
-        <span class="sep">•</span>
         <span>© <span id="year"></span> A Cowboy’s Frontier</span>
+        <span class="sep">•</span>
+        <span>Managed by <strong>JR Company Registered</strong></span>
       </div>
-      <div class="footer-right">
-        <a class="back-to-top" href="#main" aria-label="Back to top">↑</a>
-      </div>
+      <a class="back-to-top" href="#main" aria-label="Back to top">↑</a>
     </div>
   </footer>
 
