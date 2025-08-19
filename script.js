@@ -1,4 +1,4 @@
-// Mobile nav
+// mobile nav
 const navToggle = document.getElementById('navToggle');
 const siteNav = document.getElementById('siteNav');
 if (navToggle && siteNav) {
@@ -9,11 +9,11 @@ if (navToggle && siteNav) {
   });
 }
 
-// Year
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+// year
+const y = document.getElementById('year');
+if (y) y.textContent = new Date().getFullYear();
 
-// Slider
+// slider
 document.querySelectorAll('.slider').forEach(initSlider);
 
 function initSlider(slider){
@@ -34,7 +34,6 @@ function initSlider(slider){
     dot.addEventListener('click', () => go(i));
     dotsWrap.appendChild(dot);
   });
-
   const dots = [...dotsWrap.children];
 
   function update(){
@@ -42,19 +41,18 @@ function initSlider(slider){
     dots[idx].classList.add('active');
     track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
   }
-
   function go(i){
-    idx = Math.max(0, Math.min(last, i));
+    idx = (i + slides.length) % slides.length;
     update();
   }
-  function nextSlide(){ go(idx + 1 > last ? 0 : idx + 1); }
-  function prevSlide(){ go(idx - 1 < 0 ? last : idx - 1); }
+  function nextSlide(){ go(idx + 1); }
+  function prevSlide(){ go(idx - 1); }
 
   next.addEventListener('click', nextSlide);
   prev.addEventListener('click', prevSlide);
   window.addEventListener('resize', update);
 
-  // autoplay
+  // autoplay (pause on hover)
   const ms = Number(slider.dataset.autoplay || 0);
   let t;
   if (ms > 0) {
@@ -77,29 +75,3 @@ function initSlider(slider){
 
   update();
 }
-
-// News (localStorage; add posts from admin.html)
-(function renderNews(){
-  const el = document.getElementById('newsList');
-  if (!el) return;
-  let posts = [];
-  try { posts = JSON.parse(localStorage.getItem('acf_news') || '[]'); }
-  catch(_){ posts = []; }
-  if (!posts.length) {
-    el.innerHTML = `
-      <article class="news">
-        <time datetime="${new Date().toISOString().slice(0,10)}">${new Date().toLocaleDateString()}</time>
-        <h3>Website is live 🎉</h3>
-        <p>DNS connected, GitHub Pages deployed, and the trail is open. Hit “Join the Server” up top.</p>
-      </article>
-    `;
-    return;
-  }
-  el.innerHTML = posts.map(p => `
-    <article class="news">
-      <time datetime="${p.date}">${new Date(p.date).toLocaleDateString()}</time>
-      <h3>${p.title}</h3>
-      <p>${p.body}</p>
-    </article>
-  `).join('');
-})();
